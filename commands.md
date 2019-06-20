@@ -58,17 +58,8 @@ php bin/console make:auth
 
 Зайти и почистить кэш
 
-sshpass -p 'G0Vn0Eb@n0e' ssh webideeb:@webideeb.beget.tech "cd web-iden.ru/ && php7.2 bin/console cache:clear && exit"
+sshpass -p 'G0Vn0Eb@n0e' ssh webideeb:@webideeb.beget.tech "cd guns.web-iden.ru/public_html/civ6 && php7.2 bin/console cache:clear && exit"
 
 Зайти и провести миграцию
 
-sshpass -p 'G0Vn0Eb@n0e' ssh webideeb:@webideeb.beget.tech "cd web-iden.ru/ && php7.2 bin/console doctrine:migrations:migrate && exit"
-
-/* Запрос, который создает всем слаги из артикулов */
-UPDATE product SET product.slug=product.sku WHERE slug='';
-
-Сервер Тесоро
-
-sshpass -p '3l4rP6B7sExw' ssh root:@185.60.134.217 "cd /var/www/www-root/data/www/www.salontesoro.site/ && php bin/console doctrine:migrations:migrate && exit"
-
-sshpass -p '3l4rP6B7sExw' ssh root:@185.60.134.217 "cd /var/www/www-root/data/www/www.salontesoro.site/ && php bin/console cache:clear  && exit"
+sshpass -p 'G0Vn0Eb@n0e' ssh webideeb:@webideeb.beget.tech "cd guns.web-iden.ru/public_html/civ6 && php7.2 bin/console doctrine:migrations:migrate && exit"
