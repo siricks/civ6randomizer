@@ -22,6 +22,7 @@ class LeaderController extends AbstractController
     {
         return $this->render('leader/index.html.twig', [
             'leaders' => $leaderRepository->findBy([], ['country' => 'ASC']),
+            'controller_name' => 'Все лидеры'
         ]);
     }
 

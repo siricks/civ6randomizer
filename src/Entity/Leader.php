@@ -31,6 +31,11 @@ class Leader
      */
     private $country;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Game", inversedBy="leader")
+     */
+    private $game;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class Leader
     public function setCountry(string $country): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    public function getGame(): ?Game
+    {
+        return $this->game;
+    }
+
+    public function setGame(?Game $game): self
+    {
+        $this->game = $game;
 
         return $this;
     }
