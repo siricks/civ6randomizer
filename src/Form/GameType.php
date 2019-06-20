@@ -8,13 +8,16 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class GameType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('gameDate')
+            ->add('gameDate', DateTimeType::class, [
+                'data' => new \DateTime(),
+            ])
             ->add('leader',  EntityType::class, [
                 // looks for choices from this entity
                 'class' => Leader::class,

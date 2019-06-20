@@ -27,7 +27,7 @@ class LeaderController extends AbstractController
     }
 
     /**
-     * @Route("/get_random", name="leader_index", methods={"GET"})
+     * @Route("/get_random", name="leader_random", methods={"GET"})
      */
     public function random(LeaderRepository $leaderRepository): Response
     {

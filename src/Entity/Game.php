@@ -19,54 +19,23 @@ class Game
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Leader", mappedBy="game")
-     */
-    private $leader;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $gameDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Leader", inversedBy="games")
+     */
+    private $leader;
+
     public function __construct()
     {
-        $this->leader = new ArrayCollection();
+
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @return Collection|Leader[]
-     */
-    public function getLeader(): Collection
-    {
-        return $this->leader;
-    }
-
-    public function addLeader(Leader $leader): self
-    {
-        if (!$this->leader->contains($leader)) {
-            $this->leader[] = $leader;
-            $leader->setGame($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLeader(Leader $leader): self
-    {
-        if ($this->leader->contains($leader)) {
-            $this->leader->removeElement($leader);
-            // set the owning side to null (unless already changed)
-            if ($leader->getGame() === $this) {
-                $leader->setGame(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getGameDate(): ?\DateTimeInterface
@@ -77,6 +46,18 @@ class Game
     public function setGameDate(\DateTimeInterface $gameDate): self
     {
         $this->gameDate = $gameDate;
+
+        return $this;
+    }
+
+    public function getLeader(): ?Leader
+    {
+        return $this->leader;
+    }
+
+    public function setLeader(?Leader $leader): self
+    {
+        $this->leader = $leader;
 
         return $this;
     }
