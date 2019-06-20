@@ -19,6 +19,16 @@ class LeaderRepository extends ServiceEntityRepository
         parent::__construct($registry, Leader::class);
     }
 
+    public function getFreeLeaders() {
+        return $this->createQueryBuilder('l')
+//            ->leftJoin('l.games', 'g')
+//            ->addSelect('g')
+            ->where('SIZE(l.games) = 0')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Leader[] Returns an array of Leader objects
     //  */

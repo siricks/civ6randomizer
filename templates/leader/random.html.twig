@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ controller_name }}</h1>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card-deck">
+                    {% for leader in leaders %}
+                        <div class="card">
+                            <img src="{{ asset('images/leaders/' ~ leader.image) }}" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ leader.name }}</h5>
+                                <p class="card-text">{{ leader.country }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    {% else %}
+                        no records found
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
