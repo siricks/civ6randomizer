@@ -1,0 +1,5 @@
+.git-ftp-ignore
+commands.md
+env.local.php
+.htaccess
+public_html/index.php
