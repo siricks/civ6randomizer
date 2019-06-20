@@ -33,9 +33,11 @@ class LeaderController extends AbstractController
     {
         $leaders = $leaderRepository->getFreeLeaders();
         shuffle($leaders);
-        $random_leader = array_slice($leaders, 0, 3);
+        $random_leader = array_shift($leaders);
+        $random_leaders = array_slice($leaders, 0, 3);
         return $this->render('leader/random.html.twig', [
-            'leaders' => $random_leader,
+            'random_leader' => $random_leader,
+            'leaders' => $random_leaders,
             'controller_name' => 'Случайный лидер'
         ]);
     }

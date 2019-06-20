@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Game;
+use App\Entity\Leader;
 use App\Form\GameType;
 use App\Repository\GameRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +22,7 @@ class GameController extends AbstractController
     public function index(GameRepository $gameRepository): Response
     {
         return $this->render('game/index.html.twig', [
-            'games' => $gameRepository->findAll(),
+            'games' => $gameRepository->findBy([], ['id' => 'DESC']),
             'controller_name' => 'Все игры'
         ]);
     }
@@ -49,6 +50,29 @@ class GameController extends AbstractController
         ]);
     }
 
+
+    /**
+     * Создать игру по id лидера
+     * @Route("/new/{leader_id}", name="game_new_wf", methods={"GET"})
+     */
+    public function newWithOutForm($leader_id): Response
+    {
+        $game = new Game();
+        $em = $this->getDoctrine()->getManager();
+        $leader = $em->getRepository(Leader::class)->find($leader_id);
+        if(!$leader) {
+            throw $this->createNotFoundException(
+                'Leader not find in database!'
+            );
+        }
+        $game->setLeader($leader);
+        $game->setGameDate(new \DateTime());
+
+        $em->persist($game);
+        $em->flush();
+
+        return $this->redirectToRoute('game_index');
+    }
     /**
      * @Route("/{id}", name="game_show", methods={"GET"})
      */
