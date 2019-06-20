@@ -26,6 +26,20 @@ class LeaderController extends AbstractController
     }
 
     /**
+     * @Route("/get_random", name="leader_index", methods={"GET"})
+     */
+    public function random(LeaderRepository $leaderRepository): Response
+    {
+        $leaders = $leaderRepository->findAll();
+        shuffle($leaders);
+        $random_leader = [current($leaders)];
+        return $this->render('leader/index.html.twig', [
+            'leaders' => $random_leader,
+            'controller_name' => 'Случайный лидер'
+        ]);
+    }
+
+    /**
      * @Route("/new", name="leader_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -94,21 +108,5 @@ class LeaderController extends AbstractController
         return $this->redirectToRoute('leader_index');
     }
 
-    /**
-     * @Route("/random", name="leader_random", methods={"GET"})
-     */
-    public function getRandom(LeaderRepository $leaderRepository): Response
-    {
-//        return $this->render('leader/index.html.twig', [
-//            'leaders' => $leaderRepository->findBy([], ['country' => 'ASC']),
-//        ]);
-//
-//        $leaders = $leaderRepository->findAll();
-//        shuffle($leaders);
-//        $random_leader = current($leaders);
-//
-//        return $this->render('leader/index.html.twig', [
-//            'leaders' => $leaders,
-//        ]);
-    }
+
 }
