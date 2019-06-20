@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Leader index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Leader index</h1>
+
+        <div class="table-responsive">
+            <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Country</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for leader in leaders %}
+                <tr>
+                    <td>{{ leader.id }}</td>
+                    <td>{{ leader.name }}</td>
+                    <td><img src="{{ asset('images/leaders/' ~ leader.image) }}" class="img-fluid"></td>
+                    <td>{{ leader.country }}</td>
+                    <td>
+                        <a href="{{ path('leader_show', {'id': leader.id}) }}">show</a>
+                        <a href="{{ path('leader_edit', {'id': leader.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <a href="{{ path('leader_new') }}">Create new</a>
+    </div>
+{% endblock %}
