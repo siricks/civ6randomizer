@@ -16,7 +16,7 @@
                             <p class="card-text">{{ random_leader.country }}</p>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ path('game_new_wf', {'leader_id': random_leader.id}) }}">Создать игру</a>
+                            <a href="{{ path('game_new_wf', {'leader_id': random_leader.id}) }}">{% trans %}Create game{% endtrans %}</a>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                                 <p class="card-text">{{ leader.country }}</p>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ path('game_new_wf', {'leader_id': leader.id}) }}">Создать игру</a>
+                                <a href="{{ path('game_new_wf', {'leader_id': leader.id}) }}">{% trans %}Create game{% endtrans %}</a>
                             </div>
                         </div>
                     {% else %}

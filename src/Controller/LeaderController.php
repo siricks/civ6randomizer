@@ -42,13 +42,13 @@ class LeaderController extends AbstractController
      */
     public function random(LeaderRepository $leaderRepository): Response
     {
-        $leaders = $leaderRepository->getFreeLeaders();
+        $leaders = $this->getRandomLeaders($leaderRepository);
         shuffle($leaders);
-        $random_leader = array_shift($leaders);
-        $random_leaders = array_slice($leaders, 0, 3);
+        $mainLeader = array_shift($leaders);
+        $otherleaders = array_slice($leaders, 0, 3);
         return $this->render('leader/random.html.twig', [
-            'random_leader' => $random_leader,
-            'leaders' => $random_leaders,
+            'random_leader' => $mainLeader,
+            'leaders' => $otherleaders,
         ]);
     }
 
@@ -135,6 +135,22 @@ class LeaderController extends AbstractController
         }
 
         return $this->redirectToRoute('leader_index');
+    }
+
+    /**
+     * Get random leaders witout games or with min games count
+     *
+     * @param LeaderRepository $leaderRepository
+     * @return mixed
+     */
+    private function getRandomLeaders(LeaderRepository $leaderRepository)
+    {
+        $leaders = $leaderRepository->getFreeLeaders();
+        if(!$leaders) {
+            $leaders = $leaderRepository->getLeadersWithMinimumGames();
+        }
+
+        return $leaders;
     }
 
 

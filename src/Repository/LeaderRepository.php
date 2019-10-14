@@ -19,11 +19,27 @@ class LeaderRepository extends ServiceEntityRepository
         parent::__construct($registry, Leader::class);
     }
 
+    /**
+     * Get leader without games
+     * @param int $limit
+     * @return mixed
+     */
     public function getFreeLeaders() {
         return $this->createQueryBuilder('l')
-//            ->leftJoin('l.games', 'g')
-//            ->addSelect('g')
             ->where('SIZE(l.games) = 0')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function getLeadersWithMinimumGames()
+    {
+        return $this->createQueryBuilder('l')
+            ->addOrderBy('SIZE(l.games)', 'ASC')
             ->getQuery()
             ->getResult()
             ;
