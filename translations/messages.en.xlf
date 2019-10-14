@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="zyvxUrY" resname="All games">
+        <source>All games</source>
+        <target>All games</target>
+      </trans-unit>
+      <trans-unit id="Z.72Y2H" resname="All leaders">
+        <source>All leaders</source>
+        <target>All leaders</target>
+      </trans-unit>
+      <trans-unit id="1.XnWGC" resname="Civ6">
+        <source>Civ6</source>
+        <target>Civ6</target>
+      </trans-unit>
+      <trans-unit id="2drngQO" resname="Games">
+        <source>Games</source>
+        <target>Games</target>
+      </trans-unit>
+      <trans-unit id="H7E0B.A" resname="Leaders">
+        <source>Leaders</source>
+        <target>Leaders</target>
+      </trans-unit>
+      <trans-unit id="O07vFfb" resname="Random game">
+        <source>Random game</source>
+        <target>Random game</target>
+      </trans-unit>
+      <trans-unit id="0X2EpgS" resname="Exit">
+        <source>Exit</source>
+        <target>Exit</target>
+      </trans-unit>
+      <trans-unit id="zI.Z63_" resname="Welcome!">
+        <source>Welcome!</source>
+        <target>Welcome!</target>
+      </trans-unit>
+      <trans-unit id="_GqC2gr" resname="Civilization 6 Randomazer">
+        <source>Civilization 6 Randomazer</source>
+        <target>Civilization 6 Randomazer</target>
+      </trans-unit>
+      <trans-unit id="o5bP_9L" resname="Edit Game">
+        <source>Edit Game</source>
+        <target>Edit Game</target>
+      </trans-unit>
+      <trans-unit id="U0M9PNE" resname="back to list">
+        <source>back to list</source>
+        <target>back to list</target>
+      </trans-unit>
+      <trans-unit id="REE8PZe" resname="Are you sure you want to delete this item?">
+        <source>Are you sure you want to delete this item?</source>
+        <target>Are you sure you want to delete this item?</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="mhxU9V5" resname="Picture">
+        <source>Picture</source>
+        <target>Picture</target>
+      </trans-unit>
+      <trans-unit id="mcQKtAW" resname="Date">
+        <source>Date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="eGPAG1l" resname="Leader name">
+        <source>Leader name</source>
+        <target>Leader name</target>
+      </trans-unit>
+      <trans-unit id=".4BZ3Gd" resname="Actions">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="HGMzUJ3" resname="show">
+        <source>show</source>
+        <target>show</target>
+      </trans-unit>
+      <trans-unit id="JiEhxTc" resname="edit">
+        <source>edit</source>
+        <target>edit</target>
+      </trans-unit>
+      <trans-unit id="4Z1HloY" resname="No records">
+        <source>No records</source>
+        <target>No records</target>
+      </trans-unit>
+      <trans-unit id="nz33U6Q" resname="Create new">
+        <source>Create new</source>
+        <target>Create new</target>
+      </trans-unit>
+      <trans-unit id="XEEqJiC" resname="Game">
+        <source>Game</source>
+        <target>Game</target>
+      </trans-unit>
+      <trans-unit id="ohnuziL" resname="Game Date">
+        <source>Game Date</source>
+        <target>Game Date</target>
+      </trans-unit>
+      <trans-unit id="KPkEQTi" resname="New Game">
+        <source>New Game</source>
+        <target>New Game</target>
+      </trans-unit>
+      <trans-unit id="CjI3uIo" resname="Create new Game">
+        <source>Create new Game</source>
+        <target>Create new Game</target>
+      </trans-unit>
+      <trans-unit id="yKeA0.P" resname="Log in!">
+        <source>Log in!</source>
+        <target>Log in!</target>
+      </trans-unit>
+      <trans-unit id="dDUw20Q" resname="Please sign in">
+        <source>Please sign in</source>
+        <target>Please sign in</target>
+      </trans-unit>
+      <trans-unit id="47ienTP" resname="Username">
+        <source>Username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="v9QCsvb" resname="Sign in">
+        <source>Sign in</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="_QePE0U" resname="Edit Leader">
+        <source>Edit Leader</source>
+        <target>Edit Leader</target>
+      </trans-unit>
+      <trans-unit id="wAbs.Cg" resname="Random leader">
+        <source>Random leader</source>
+        <target>Random leader</target>
+      </trans-unit>
+      <trans-unit id="8giH1x2" resname="Create game">
+        <source>Create game</source>
+        <target>Create game</target>
+      </trans-unit>
+      <trans-unit id="P1OHGwg" resname="Leader">
+        <source>Leader</source>
+        <target>Leader</target>
+      </trans-unit>
+      <trans-unit id="EhVukhv" resname="Id">
+        <source>Id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="GqTLC8y" resname="Image">
+        <source>Image</source>
+        <target>Image</target>
+      </trans-unit>
+      <trans-unit id="cB0CHQj" resname="Country">
+        <source>Country</source>
+        <target>Country</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

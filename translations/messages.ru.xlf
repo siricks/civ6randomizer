@@ -153,6 +153,10 @@
         <source>Country</source>
         <target>Страна</target>
       </trans-unit>
+      <trans-unit id="8giH1x2" resname="Create game">
+        <source>Create game</source>
+        <target>Создать игру</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
