@@ -37,7 +37,17 @@
             </ul>
 
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    {% set route = app.request.attributes.get('_route') %}
+                    {% set route_params = app.request.attributes.get('_route_params') %}
+                    {% set params = route_params|merge(app.request.query.all) %}
 
+                    {% for locale in locales if locale != app.request.locale %}
+                            <a  class="nav-link"  href="{{ path(route, params|merge({ _locale: locale })) }}">
+                                {{ locale }}
+                            </a>
+                    {% endfor %}
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_logout') }}">{% trans %}Exit{% endtrans %}</a>
                 </li>

@@ -28,8 +28,12 @@ class GameController extends AbstractController
      * @param TranslatorInterface $translator
      * @return Response
      */
-    public function index(GameRepository $gameRepository, TranslatorInterface $translator): Response
+    public function index(GameRepository $gameRepository, TranslatorInterface $translator, Request $request): Response
     {
+        $locale = $request->getLocale();
+
+        $request->setLocale('ru');
+
         return $this->render('game/index.html.twig', [
             'games' => $gameRepository->findBy([], ['id' => 'DESC']),
             'controller_name' => $translator->trans('All games'),
