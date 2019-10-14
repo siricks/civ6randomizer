@@ -9,25 +9,36 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
+ * Leader controller
+ *
  * @Route("/leader")
  */
 class LeaderController extends AbstractController
 {
     /**
+     * Main page
+     *
      * @Route("/", name="leader_index", methods={"GET"})
+     * @param LeaderRepository $leaderRepository
+     * @return Response
      */
-    public function index(LeaderRepository $leaderRepository): Response
+    public function index(LeaderRepository $leaderRepository, TranslatorInterface $translator): Response
     {
         return $this->render('leader/index.html.twig', [
             'leaders' => $leaderRepository->findBy([], ['country' => 'ASC']),
-            'controller_name' => 'Все лидеры'
+            'controller_name' => $translator->trans('All leaders')
         ]);
     }
 
     /**
+     * Get 1 random leader to game
      * @Route("/get_random", name="leader_random", methods={"GET"})
+     *
+     * @param LeaderRepository $leaderRepository
+     * @return Response
      */
     public function random(LeaderRepository $leaderRepository): Response
     {
@@ -38,12 +49,16 @@ class LeaderController extends AbstractController
         return $this->render('leader/random.html.twig', [
             'random_leader' => $random_leader,
             'leaders' => $random_leaders,
-            'controller_name' => 'Случайный лидер'
         ]);
     }
 
     /**
+     * Create leader
+     *
      * @Route("/new", name="leader_new", methods={"GET","POST"})
+     *
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -67,6 +82,9 @@ class LeaderController extends AbstractController
 
     /**
      * @Route("/{id}", name="leader_show", methods={"GET"})
+     *
+     * @param Leader $leader
+     * @return Response
      */
     public function show(Leader $leader): Response
     {
@@ -77,6 +95,10 @@ class LeaderController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="leader_edit", methods={"GET","POST"})
+     *
+     * @param Request $request
+     * @param Leader $leader
+     * @return Response
      */
     public function edit(Request $request, Leader $leader): Response
     {
@@ -99,6 +121,10 @@ class LeaderController extends AbstractController
 
     /**
      * @Route("/{id}", name="leader_delete", methods={"DELETE"})
+     *
+     * @param Request $request
+     * @param Leader $leader
+     * @return Response
      */
     public function delete(Request $request, Leader $leader): Response
     {

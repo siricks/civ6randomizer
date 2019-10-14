@@ -24,7 +24,7 @@
                     </div>
                     <div class="card-footer">
                         <a href="{{ path('leader_show', {'id': leader.id}) }}">show</a>
-                        <a href="{{ path('leader_edit', {'id': leader.id}) }}">edit</a>
+                        <a href="{{ path('leader_edit', {'id': leader.id}) }}">{% trans %}edit{% endtrans %}</a>
                     </div>
                 </div>
             {% else %}

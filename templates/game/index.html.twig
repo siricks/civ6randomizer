@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Game index{% endblock %}
+{% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -10,34 +10,32 @@
             <table class="table">
                 <thead>
                 <tr>
-{#                    <th>№</th>#}
-                    <th>Фото</th>
-                    <th>Дата</th>
-                    <th>Имя</th>
-                    <th>Действия</th>
+                    <th>{% trans %}Picture{% endtrans %}</th>
+                    <th>{% trans %}Date{% endtrans %}</th>
+                    <th>{% trans %}Leader name{% endtrans %}</th>
+                    <th>{% trans %}Actions{% endtrans %}</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for game in games %}
                     <tr>
-{#                        <td>{{ game.id }}</td>#}
                         <td><img src="{{ asset('images/leaders/' ~ game.leader.image) }}" class="img-fluid"></td>
                         <td>{{ game.gameDate ? game.gameDate|date('d-m-Y H:i:s') : '' }}</td>
                         <td>{{ game.leader.name }}</td>
                         <td>
-                            <a href="{{ path('game_show', {'id': game.id}) }}">show</a>
-                            <a href="{{ path('game_edit', {'id': game.id}) }}">edit</a>
+                            <a href="{{ path('game_show', {'id': game.id}) }}">{% trans %}show{% endtrans %}</a>
+                            <a href="{{ path('game_edit', {'id': game.id}) }}">{% trans %}edit{% endtrans %}</a>
                         </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="3">Игр не найдено</td>
+                        <td colspan="3">{% trans %}No records{% endtrans %}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
 
-            <a href="{{ path('game_new') }}">Создать новую</a>
+            <a href="{{ path('game_new') }}">{% trans %}Create new{% endtrans %}</a>
         </div>
     </div>
 {% endblock %}

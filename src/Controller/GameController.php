@@ -11,24 +11,37 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Contracts\Translation\TranslatorInterface;
+
 /**
- * @Route("/game")
+ * Game statistic controller
+ *
+ * @Route("/games")
  */
 class GameController extends AbstractController
 {
     /**
+     * Main page
      * @Route("/", name="game_index", methods={"GET"})
+     *
+     * @param GameRepository $gameRepository
+     * @param TranslatorInterface $translator
+     * @return Response
      */
-    public function index(GameRepository $gameRepository): Response
+    public function index(GameRepository $gameRepository, TranslatorInterface $translator): Response
     {
         return $this->render('game/index.html.twig', [
             'games' => $gameRepository->findBy([], ['id' => 'DESC']),
-            'controller_name' => 'Все игры'
+            'controller_name' => $translator->trans('All games'),
         ]);
     }
 
     /**
+     * Create new game
      * @Route("/new", name="game_new", methods={"GET","POST"})
+     *
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -52,10 +65,14 @@ class GameController extends AbstractController
 
 
     /**
-     * Создать игру по id лидера
+     * Create new game by leaders id
      * @Route("/new/{leader_id}", name="game_new_wf", methods={"GET"})
+     *
+     * @param $leader_id
+     * @return Response
+     * @throws \Exception
      */
-    public function newWithOutForm($leader_id): Response
+    public function newWithOutForm(int $leader_id): Response
     {
         $game = new Game();
         $em = $this->getDoctrine()->getManager();
@@ -73,8 +90,13 @@ class GameController extends AbstractController
 
         return $this->redirectToRoute('game_index');
     }
+
     /**
+     * Show single game
      * @Route("/{id}", name="game_show", methods={"GET"})
+     *
+     * @param Game $game
+     * @return Response
      */
     public function show(Game $game): Response
     {
@@ -84,7 +106,12 @@ class GameController extends AbstractController
     }
 
     /**
+     * Edit single game
      * @Route("/{id}/edit", name="game_edit", methods={"GET","POST"})
+     *
+     * @param Request $request
+     * @param Game $game
+     * @return Response
      */
     public function edit(Request $request, Game $game): Response
     {
@@ -106,7 +133,11 @@ class GameController extends AbstractController
     }
 
     /**
+     * Delete game
      * @Route("/{id}", name="game_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Game $game
+     * @return Response
      */
     public function delete(Request $request, Game $game): Response
     {

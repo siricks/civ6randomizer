@@ -1,34 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Leader{% endblock %}
+{% block title %}{% trans %}Leader{% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>Leader</h1>
+    <h1>{% trans %}Leader{% endtrans %}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{% trans %}Id{% endtrans %}</th>
                 <td>{{ leader.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>{% trans %}Name{% endtrans %}</th>
                 <td>{{ leader.name }}</td>
             </tr>
             <tr>
-                <th>Image</th>
+                <th>{% trans %}Image{% endtrans %}</th>
                 <td>{{ leader.image }}</td>
             </tr>
             <tr>
-                <th>Country</th>
+                <th>{% trans %}Country{% endtrans %}</th>
                 <td>{{ leader.country }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('leader_index') }}">back to list</a>
+    <a href="{{ path('leader_index') }}">{% trans %}back to list{% endtrans %}</a>
 
-    <a href="{{ path('leader_edit', {'id': leader.id}) }}">edit</a>
+    <a href="{{ path('leader_edit', {'id': leader.id}) }}">{% trans %}edit{% endtrans %}</a>
 
     {{ include('leader/_delete_form.html.twig') }}
 {% endblock %}

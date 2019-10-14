@@ -17,7 +17,6 @@ class MainPageController extends AbstractController
         shuffle($leaders);
         $random_leader = array_shift($leaders);
         return $this->render('main_page/index.html.twig', [
-            'controller_name' => 'MainPageController',
             'random_leader' => $random_leader,
         ]);
     }
