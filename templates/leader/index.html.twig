@@ -16,14 +16,14 @@
                         <p class="card-text">
                             <small class="text-muted">
                                 {% if leader.games|length > 0 %}
-                                    {% trans %}Number of games:{% endtrans %} {{ leader.games|length }}
+                                    {% trans %}Number of games{% endtrans %}: {{ leader.games|length }}
                                 {% endif %}
                             </small>
 
                         </p>
                     </div>
                     <div class="card-footer">
-                        <a href="{{ path('leader_show', {'id': leader.id}) }}">show</a>
+                        <a href="{{ path('leader_show', {'id': leader.id}) }}">{% trans %}show{% endtrans %}</a>
                         <a href="{{ path('leader_edit', {'id': leader.id}) }}">{% trans %}edit{% endtrans %}</a>
                     </div>
                 </div>
@@ -32,6 +32,6 @@
             {% endfor %}
 
         </div>
-        <a href="{{ path('leader_new') }}">Создать нового</a>
+        <a href="{{ path('leader_new') }}">{% trans %}Create new{% endtrans %}</a>
     </div>
 {% endblock %}

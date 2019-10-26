@@ -22,10 +22,13 @@ php bin/console doctrine:database:drop --force
 
 Фикстуры
 Создать пустой класс фикстур
-bin/console make:fixtures
+php bin/console make:fixtures
 
 Загрузить фикстуры
 php bin/console doctrine:fixtures:load
+
+Загрузить только некоторые фикстуры без удаления БД
+php bin/console doctrine:fixtures:load --group=common --append
 
 Создать контроллер
 php bin/console make:controller
@@ -54,12 +57,8 @@ composer require symfony/security-bundle
 (https://symfony.com/doc/current/security/form_login_setup.html)
 php bin/console make:auth
 
-**Сервер Бегета**
+Обновить файлы перевода
+php bin/console translation:update --dump-messages --force ru
 
-Зайти и почистить кэш
-
-sshpass -p 'G0Vn0Eb@n0e' ssh webideeb:@webideeb.beget.tech "cd guns.web-iden.ru/public_html/civ6 && php7.2 bin/console cache:clear && exit"
-
-Зайти и провести миграцию
-
-sshpass -p 'G0Vn0Eb@n0e' ssh webideeb:@webideeb.beget.tech "cd guns.web-iden.ru/public_html/civ6 && php7.2 bin/console doctrine:migrations:migrate && exit"
+Список всех параметров
+php bin/console debug:container --parameters
