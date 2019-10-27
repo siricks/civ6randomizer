@@ -4,3 +4,4 @@ env.local.php
 .htaccess
 public_html/index.php
 bash/
+docs/

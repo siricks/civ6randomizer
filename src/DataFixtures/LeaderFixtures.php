@@ -39,6 +39,7 @@ class LeaderFixtures extends Fixture
       ['country' => 'Франция', 'name' => 'Екатерина Медичи',  'image' => 'CivilizationVI_France_Catherine'],
       ['country' => 'Шумеры', 'name' => 'Гильгамеш',  'image' => 'Civ6_Sumerian_Gilgamesh'],
       ['country' => 'Япония', 'name' => 'Ходзё Токимунэ',  'image' => 'civ6_tokimune1'],
+      ['country' => 'Польща', 'name' => 'Ядвига',  'image' => 'jadwiga'],
     ];
 
     public function load(ObjectManager $manager)

@@ -13,6 +13,7 @@ class UserFixtures extends Fixture
         $user = new User();
         $user->setUsername('Siricks');
         $user->setPassword('$2y$13$.swN8t0O.zQo3jJ9VTYIxeX9ALXIB6CT/4tand1jJKUckNmp9BBke');
+        $user->setLocale('ru');
         $manager->persist($user);
         $manager->flush();
     }
