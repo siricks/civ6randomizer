@@ -13,11 +13,15 @@ class MainPageController extends AbstractController
      */
     public function index(LeaderRepository $leaderRepository)
     {
+        if($this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('leader_index');
+        }
+
         $leaders = $leaderRepository->findAll();
         shuffle($leaders);
-        $random_leader = array_shift($leaders);
+        $two = array_slice($leaders, 0, 2);
         return $this->render('main_page/index.html.twig', [
-            'random_leader' => $random_leader,
+            'leaders' => $two,
         ]);
     }
 }

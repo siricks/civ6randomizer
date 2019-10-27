@@ -3,11 +3,42 @@
 {% block title %}{% trans %}Civilization 6 Randomazer{% endtrans %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <img src="{{ asset('images/leaders/' ~ random_leader.image) }}" class="card-img-top" alt="{{ random_leader.name }}">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-6 mx-auto mt-4">
+                <div class="row">
+                    <div class="card-deck">
+                        {% set route = app.request.attributes.get('_route') %}
+                        {% set route_params = app.request.attributes.get('_route_params') %}
+                        {% set params = route_params|merge(app.request.query.all) %}
+
+                        {% for locale in locales %}
+                            <div class="card">
+                                <img src="{{ asset('images/leaders/' ~ leaders[loop.index0].image) }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    {% if loop.index0 == 0  %}
+                                        <p class="card-text">Welcome to Civilization 6 Randomazer! Please, choice the language and sig in:</p>
+                                        <a class="btn btn-outline-primary"
+                                           href="{{ path('app_login', params|merge({ _locale: locale })) }}">
+                                            Sign in
+                                        </a>
+                                    {% else %}
+                                        <p class="card-text">Добро пожаловать в Civ6Randomizer! Выберите язык и войдите:</p>
+                                        <a class="btn btn-outline-primary"
+                                           href="{{ path('app_login', params|merge({ _locale: locale })) }}">
+                                            Войти
+                                        </a>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

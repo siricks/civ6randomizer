@@ -161,6 +161,10 @@
         <source>Number of games</source>
         <target>Number of games</target>
       </trans-unit>
+      <trans-unit id="_TJnqhH" resname="Remember me">
+        <source>Remember me</source>
+        <target>Remember me</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -3,38 +3,176 @@
 {% block title %}{% trans %}Log in!{% endtrans %}{% endblock %}
 
 {% block body %}
+    <style>
+
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 420px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .form-label-group {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .form-label-group > input,
+        .form-label-group > label {
+            height: 3.125rem;
+            padding: .75rem;
+        }
+
+        .form-label-group > label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            margin-bottom: 0; /* Override default `<label>` margin */
+            line-height: 1.5;
+            color: #495057;
+            pointer-events: none;
+            cursor: text; /* Match the input under the label */
+            border: 1px solid transparent;
+            border-radius: .25rem;
+            transition: all .1s ease-in-out;
+        }
+
+        .form-label-group input::-webkit-input-placeholder {
+            color: transparent;
+        }
+
+        .form-label-group input:-ms-input-placeholder {
+            color: transparent;
+        }
+
+        .form-label-group input::-ms-input-placeholder {
+            color: transparent;
+        }
+
+        .form-label-group input::-moz-placeholder {
+            color: transparent;
+        }
+
+        .form-label-group input::placeholder {
+            color: transparent;
+        }
+
+        .form-label-group input:not(:placeholder-shown) {
+            padding-top: 1.25rem;
+            padding-bottom: .25rem;
+        }
+
+        .form-label-group input:not(:placeholder-shown) ~ label {
+            padding-top: .25rem;
+            padding-bottom: .25rem;
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* Fallback for Edge
+        -------------------------------------------------- */
+        @supports (-ms-ime-align: auto) {
+            .form-label-group > label {
+                display: none;
+            }
+            .form-label-group input::-ms-input-placeholder {
+                color: #777;
+            }
+        }
+
+        /* Fallback for IE
+        -------------------------------------------------- */
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            .form-label-group > label {
+                display: none;
+            }
+            .form-label-group input:-ms-input-placeholder {
+                color: #777;
+            }
+        }
+
+    </style>
     <div class="container">
-        <form method="post">
+        <form method="post" class="form-signin">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
 
             <h1 class="h3 mb-3 font-weight-normal">{% trans %}Please sign in{% endtrans %}</h1>
-            <label for="inputUsername" class="sr-only">{% trans %}Username{% endtrans %}</label>
-            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control"
-                   placeholder="Username" required autofocus>
-            <label for="inputPassword" class="sr-only">{% trans %}Password{% endtrans %}</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
-                   required>
+
+            <div class="form-label-group">
+                <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control"
+                       placeholder="{% trans %}Username{% endtrans %}" required autofocus>
+                <label for="inputUsername">{% trans %}Username{% endtrans %}</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="password" id="inputPassword"  name="password" class="form-control" placeholder="{% trans %}Password{% endtrans %}"
+                       required>
+                <label for="inputPassword">{% trans %}Password{% endtrans %}</label>
+            </div>
 
             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}"
             >
 
-            {#
-                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                See https://symfony.com/doc/current/security/remember_me.html
 
-                <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" name="_remember_me"> Remember me
-                    </label>
-                </div>
-            #}
 
-            <button class="btn btn-lg btn-primary" type="submit">
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me" checked> {% trans %}Remember me{% endtrans %}
+                </label>
+            </div>
+
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
                 {% trans %}Sign in{% endtrans %}
             </button>
+            <p class="mt-3 mb-3 text-muted text-center">
+                {% set route = app.request.attributes.get('_route') %}
+                {% set route_params = app.request.attributes.get('_route_params') %}
+                {% set params = route_params|merge(app.request.query.all) %}
+
+                {% for locale in locales if locale != app.request.locale %}
+                    <a class="btn btn-link btn-block"  href="{{ path(route, params|merge({ _locale: locale })) }}">
+                        {{ locale }}
+                    </a>
+                {% endfor %}
+            </p>
         </form>
     </div>
 {% endblock %}
