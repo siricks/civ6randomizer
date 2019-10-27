@@ -157,6 +157,10 @@
         <source>Country</source>
         <target>Country</target>
       </trans-unit>
+      <trans-unit id="IAgp0n9" resname="Number of games">
+        <source>Number of games</source>
+        <target>Number of games</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

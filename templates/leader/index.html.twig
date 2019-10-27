@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ controller_name }}{% endblock %}
+{% block title %}{% trans %}All leaders{% endtrans %}{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1>{{ controller_name }}</h1>
+        <h1>{% trans %}All leaders{% endtrans %}</h1>
         <div class="card-columns">
             {% for leader in leaders %}
 
@@ -16,7 +16,7 @@
                         <p class="card-text">
                             <small class="text-muted">
                                 {% if leader.games|length > 0 %}
-                                    {{ leader.games|length }}
+                                    {% trans %}Number of games{% endtrans %}: {{ leader.games|length }}
                                 {% endif %}
                             </small>
 

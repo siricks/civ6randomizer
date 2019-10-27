@@ -25,11 +25,10 @@ class LeaderController extends AbstractController
      * @param LeaderRepository $leaderRepository
      * @return Response
      */
-    public function index(LeaderRepository $leaderRepository, TranslatorInterface $translator): Response
+    public function index(LeaderRepository $leaderRepository): Response
     {
         return $this->render('leader/index.html.twig', [
             'leaders' => $leaderRepository->findBy([], ['country' => 'ASC']),
-            'controller_name' => $translator->trans('All leaders')
         ]);
     }
 
