@@ -157,10 +157,6 @@
         <source>Create game</source>
         <target>Создать игру</target>
       </trans-unit>
-      <trans-unit id="IAgp0n9" resname="Number of games">
-        <source>Number of games</source>
-        <target>__Number of games</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>
