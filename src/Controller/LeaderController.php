@@ -40,6 +40,7 @@ class LeaderController extends AbstractController
      *
      * @param LeaderRepository $leaderRepository
      * @return Response
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function random(LeaderRepository $leaderRepository): Response
     {
