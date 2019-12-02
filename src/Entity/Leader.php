@@ -132,4 +132,16 @@ class Leader
 
         return $this;
     }
+
+    /**
+     * Just set 1 game to games count
+     *
+     * @return Leader
+     */
+    public function addOneGame(): self
+    {
+        $this->gamesCount = $this->gamesCount + 1;
+
+        return $this;
+    }
 }

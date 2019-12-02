@@ -84,7 +84,9 @@ class GameController extends AbstractController
         }
         $game->setLeader($leader);
         $game->setGameDate(new \DateTime());
+        $leader->addOneGame();
 
+        $em->persist($leader);
         $em->persist($game);
         $em->flush();
 
