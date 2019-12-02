@@ -39,5 +39,4 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/en/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/ru/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: ROLE_USER }

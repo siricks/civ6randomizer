@@ -49,6 +49,7 @@ class LeaderFixtures extends Fixture
              $leader->setName($head['name']);
              $leader->setCountry($head['country']);
              $leader->setImage($head['image'] . '.jpg');
+             $leader->setGamesCount(0);
              $manager->persist($leader);
         }
 

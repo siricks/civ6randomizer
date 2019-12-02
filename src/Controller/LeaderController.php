@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Leader;
 use App\Form\LeaderType;
+use App\Repository\GameRepository;
 use App\Repository\LeaderRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,6 +51,31 @@ class LeaderController extends AbstractController
             'random_leader' => $mainLeader,
             'leaders' => $otherleaders,
         ]);
+    }
+
+    /**
+     * Set games count for all leaders
+     *
+     * @Route("/set-games-count", name="set_game_count_for_all", methods={"GET"})
+     *
+     * @param LeaderRepository $leaderRepository
+     * @return Response
+     */
+    public function setLeaderGameCount(LeaderRepository $leaderRepository, GameRepository $gameRepository, EntityManagerInterface $entityManager)
+    {
+        $leaders = $leaderRepository->findAll();
+        if(!$leaders) {
+            return $this->redirect('leader_index');
+        }
+        foreach ($leaders as $leader) {
+            $games = $gameRepository->findBy(['leader' => $leader]);
+            $leader->setGamesCount(count($games));
+            $entityManager->persist($leader);
+        }
+
+        $entityManager->flush();
+
+        return $this->redirect('leader_index');
     }
 
     /**
@@ -141,12 +168,14 @@ class LeaderController extends AbstractController
      *
      * @param LeaderRepository $leaderRepository
      * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     private function getRandomLeaders(LeaderRepository $leaderRepository)
     {
         $leaders = $leaderRepository->getFreeLeaders();
         if(!$leaders) {
-            $leaders = $leaderRepository->getLeadersWithMinimumGames();
+            $minimumGames = $leaderRepository->getMinGamesCount();
+            $leaders = $leaderRepository->getLeadersByGamesCount($minimumGames);
         }
 
         return $leaders;

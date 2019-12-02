@@ -38,6 +38,11 @@ class Leader
      */
     private $games;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $gamesCount;
+
     public function __construct()
     {
         $this->games = new ArrayCollection();
@@ -112,6 +117,18 @@ class Leader
                 $game->setLeader(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getGamesCount(): ?int
+    {
+        return $this->gamesCount;
+    }
+
+    public function setGamesCount(int $gamesCount): self
+    {
+        $this->gamesCount = $gamesCount;
 
         return $this;
     }

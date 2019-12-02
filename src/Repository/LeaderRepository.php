@@ -33,16 +33,33 @@ class LeaderRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param int $limit
+     * Get leaders wit minimum games
+     *
+     * @param $gamesCount
      * @return mixed
      */
-    public function getLeadersWithMinimumGames()
+    public function getLeadersByGamesCount($gamesCount)
     {
         return $this->createQueryBuilder('l')
-            ->addOrderBy('SIZE(l.games)', 'ASC')
+           ->where('l.gamesCount = :gamesCount')
+            ->setParameter('gamesCount', $gamesCount)
             ->getQuery()
             ->getResult()
             ;
+    }
+
+    /**
+     * Get min games count from leaders table
+     *
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getMinGamesCount()
+    {
+        return $this->createQueryBuilder('l')
+            ->select('MIN(l.gamesCount)')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     // /**
